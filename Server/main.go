@@ -35,7 +35,7 @@ func init() {
 		log.Fatalf("[error] failed to read file '%s': %s\n", file, e.Error())
 	}
 	fileSize = len(fileBytes)
-	log.Printf("[info] loaded %d Mbytes from %s\n", byteToMbyte(int64(fileSize)), file)
+	log.Printf("[info] loaded %d Mbytes (%d bytes) from %s\n", byteToMbyte(int64(fileSize)), fileSize, file)
 }
 
 func main() {
