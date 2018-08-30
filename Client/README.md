@@ -6,4 +6,4 @@
 ### What it does
 It connects to the given address/port, and then waits for the file name and size. It creates and then writes the file. The file is recived in 1024B chunks by default.
 ### Building
-To build this you need a working Go environment and [`github.com/schollz/progressbar`](https://github.com/schollz/progressbar)
+To build this you need a working Go environment, [`github.com/dustin/go-humanize`](htt[github.com/dustin/go-humanize), and [`github.com/schollz/progressbar`](https://github.com/schollz/progressbar)

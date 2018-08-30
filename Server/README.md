@@ -1,9 +1,9 @@
 # FileMover Server
 ### Usage
-`./Server -f SomeFile.zip` (uses 1024B chunks, and port `1666` by default)
+`./Server` (uses 1024B chunks, current directory, and port `1666` by default)
 ### Advanced usage
-`./Server -f <file name> -b <buffer size> -p <port to listen on>` (buffer size must be the same for both the client and server)
+`./Server -f <folder path> -b <buffer size> -p <port to listen on>` (buffer size must be the same for both the client and server)
+### Building
+To build this project, you need a working Go environment, [`github.com/JoshuaDoes/govvv`](https://github.com/JoshuaDoes/govvv) and [`github.com/dustin/go-humanize`](htt[github.com/dustin/go-humanize). Once you have all that, simply run `govvv build`.
 ### What it does
-It loads the file (into memory, so be careful with large ones!) then waits for a socket connection.
-
-When it gets a connection it sends the file's name, then the file's size and then begins transferring the file (in 1024B chunks)
+When a client connects it sends a packet with Server MOTD, file count and buffer size. It then waits for the client to send an ID. The server then sends the file with that ID.
