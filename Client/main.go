@@ -37,7 +37,7 @@ type fileinfo struct {
 
 func init() {
 	flag.StringVar(&remoteAddr, "a", "", "Address of remote client")
-	flag.Int64Var(&initBufSize, "b", 1024, "Starting buffer size (default 1024)")
+	flag.Int64Var(&initBufSize, "b", 1024, "Starting buffer size")
 	flag.Parse()
 }
 

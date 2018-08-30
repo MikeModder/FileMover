@@ -47,10 +47,10 @@ type fileinfo struct {
 }
 
 func init() {
-	flag.IntVar(&listenPort, "p", 1666, "TCP port (default 1666)")
-	flag.IntVar(&bufferSize, "b", 1024, "Size of buffer (default 1024)")
+	flag.IntVar(&listenPort, "p", 1666, "TCP port")
+	flag.IntVar(&bufferSize, "b", 1024, "Size of buffer")
 	flag.StringVar(&motd, "m", "FileMover server git-"+GitCommit+"-"+BuildDate, "Optional MOTD for server")
-	flag.StringVar(&dir, "d", ".", "Directory with files to send (default current)")
+	flag.StringVar(&dir, "d", ".", "Directory with files to send")
 	flag.Parse()
 	var e error
 
