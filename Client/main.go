@@ -9,6 +9,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/schollz/progressbar"
 )
 
 var (
@@ -41,6 +43,8 @@ func main() {
 	c.Read(buf)
 	size, _ := strconv.ParseInt(strings.Trim(string(buf), ":"), 10, 64)
 
+	bar := progressbar.New(int(size))
+
 	log.Printf("[info] getting %s (%d Mbytes) from %s\n", name, byteToMbyte(size), c.RemoteAddr().String())
 	newFile, e := os.Create(name)
 	if e != nil {
@@ -54,9 +58,11 @@ func main() {
 		if (size - received) < bufSize {
 			io.CopyN(newFile, c, (size - received))
 			c.Read(make([]byte, (received+bufSize)-size))
+			bar.Finish()
 			break
 		}
 		io.CopyN(newFile, c, bufSize)
+		bar.Add(int(bufSize))
 		received += bufSize
 	}
 	tookSeconds := time.Now().Sub(start).Seconds()
