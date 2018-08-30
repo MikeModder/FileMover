@@ -66,7 +66,6 @@ func main() {
 		received += bufSize
 	}
 	tookSeconds := time.Now().Sub(start).Seconds()
-	log.Printf("[info] got %s! took %.1fs\n", name, tookSeconds)
 }
 
 func byteToMbyte(b int64) int64 {
