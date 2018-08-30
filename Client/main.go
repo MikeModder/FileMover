@@ -8,7 +8,6 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"time"
 
 	"github.com/schollz/progressbar"
 )
@@ -33,7 +32,6 @@ func main() {
 	defer c.Close()
 
 	// Connection all good(?)
-	start := time.Now()
 	buf := make([]byte, bufSize)
 
 	// Read file name, then file size, then file contents
@@ -65,7 +63,6 @@ func main() {
 		bar.Add(int(bufSize))
 		received += bufSize
 	}
-	tookSeconds := time.Now().Sub(start).Seconds()
 }
 
 func byteToMbyte(b int64) int64 {
